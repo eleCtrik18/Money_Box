@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:money_box/homepage.dart';
+import 'package:money_box/initial_screen.dart';
 import 'package:money_box/mediminder/src/global_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +39,7 @@ class _MedicineReminderState extends State<MedicineReminder> {
           primarySwatch: Colors.green,
           brightness: Brightness.light,
         ),
-        home: HomePage(),
+        home: LoginPage(),
         debugShowCheckedModeBanner: false,
       ),
     );

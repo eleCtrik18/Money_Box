@@ -98,10 +98,3 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-  fonts:
-    - family: Ic
-      fonts:
-        - asset: assets/fonts/ic/ic_medicine.ttf
-    - family: Angel
-      fonts:
-        - asset: assets/fonts/neu/Angel Signature.ttf

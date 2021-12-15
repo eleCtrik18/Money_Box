@@ -5,6 +5,7 @@ import 'package:money_box/credit_card/card_screen.dart';
 import 'package:money_box/expense/helper.dart';
 import 'package:money_box/expense/home_expense.dart';
 import 'package:money_box/mediminder/src/ui/homepage/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +15,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var first = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    fetchToken();
+  }
+
+  void fetchToken() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var x = pref.getString("firstname").toString();
+    setState(() {
+      first = x;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +39,16 @@ class _HomePageState extends State<HomePage> {
         child: Column(children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height * 0.3,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.blueAccent,
-              borderRadius: const BorderRadius.only(
-                bottomRight: const Radius.circular(50),
-              ),
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 10,
+                  offset: Offset(0, 10),
+                )
+              ],
             ),
             child: Stack(children: <Widget>[
               Positioned(
@@ -60,15 +82,17 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 30,
           ),
-          const Positioned(
+          Positioned(
               top: 110,
               left: 20,
-              child: Text(
-                'Hello User',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent,
+              child: Container(
+                child: Text(
+                  "Hello, ${first}",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
+                  ),
                 ),
               )),
           const SizedBox(
