@@ -33,7 +33,7 @@ dependencies:
   velocity_x: ^3.3.0
   http: ^0.13.3  
   intl: ^0.17.0
-  flutter_local_notifications: ^3.0.1+2
+  flutter_local_notifications: ^9.1.5
   animated_text_kit: ^2.5.3
   animated_widgets: ^1.0.6
   provider: ^6.0.1

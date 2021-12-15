@@ -13,6 +13,7 @@ class InputWrapper extends StatelessWidget {
     if (firstController.text.isNotEmpty && lastController.text.isNotEmpty) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString("firstname", firstController.text);
+      prefs.setString("lastname", lastController.text);
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => HomePage()),
           (Route<dynamic> route) => false);

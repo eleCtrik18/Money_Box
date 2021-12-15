@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CreditCard extends StatefulWidget {
   @override
@@ -10,6 +11,25 @@ class CreditCard extends StatefulWidget {
 }
 
 class _CreditCardState extends State<CreditCard> {
+  var first = '';
+  var last = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    fetchdetails();
+  }
+
+  void fetchdetails() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var x = pref.getString("firstname").toString();
+    var y = pref.getString("lastname").toString();
+    setState(() {
+      first = x;
+      last = y;
+    });
+  }
+
   double horizontalDrag = 0;
 
   @override
@@ -32,7 +52,7 @@ class _CreditCardState extends State<CreditCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: LinearGradient(
-              colors: [Color(0xff326244), Color(0xff004024)],
+              colors: const [Color(0xff326244), Color(0xff004024)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -52,7 +72,7 @@ class _CreditCardState extends State<CreditCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Text(
                 'MoneyBox',
                 style: TextStyle(
@@ -89,7 +109,7 @@ class _CreditCardState extends State<CreditCard> {
             height: 10,
           ),
           Text(
-            'Chetan Singh',
+            '${first} ${last}',
             style: TextStyle(color: Colors.black),
           ),
           SizedBox(
@@ -101,7 +121,7 @@ class _CreditCardState extends State<CreditCard> {
                 color: Colors.grey[300],
                 fontSize: 18,
                 wordSpacing: 15,
-                shadows: [
+                shadows: const [
                   BoxShadow(
                     blurRadius: 2,
                     spreadRadius: 2,

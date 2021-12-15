@@ -63,7 +63,7 @@ class _NewEntryState extends State<NewEntry> {
         ),
         centerTitle: true,
         title: Text(
-          "Add New Bill payment-reminder",
+          "New Bill payment-reminder",
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -108,18 +108,32 @@ class _NewEntryState extends State<NewEntry> {
               ),
             ),
             PanelTitle(
-              title: " Amount of Bill to be paid",
+              title: " Amount of Bill to be paid(₹)",
               isRequired: false,
             ),
-            TextFormField(
-              controller: dosageController,
-              keyboardType: TextInputType.number,
-              style: TextStyle(
-                fontSize: 16,
-              ),
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                border: UnderlineInputBorder(),
+            Container(
+              decoration: BoxDecoration(
+                  color: Color(0xffedeef6),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 0,
+                        offset: Offset(0, 0))
+                  ]),
+              child: TextFormField(
+                controller: dosageController,
+                keyboardType: TextInputType.number,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.only(top: 20, left: 20, bottom: 5),
+                    hintText: 'Enter Bill amount in ₹',
+                    hintStyle: TextStyle(color: Colors.amber, fontSize: 12)),
               ),
             ),
             SizedBox(
@@ -306,7 +320,6 @@ class _NewEntryState extends State<NewEntry> {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'repeatDailyAtTime channel id',
       'repeatDailyAtTime channel name',
-      'repeatDailyAtTime description',
       importance: Importance.max,
       ledColor: Color(0xFF3EB16F),
       ledOffMs: 1000,
@@ -326,9 +339,9 @@ class _NewEntryState extends State<NewEntry> {
       }
       await flutterLocalNotificationsPlugin.showDailyAtTime(
           int.parse(medicine.notificationIDs[i]),
-          'Mediminder: ${medicine.medicineName}',
+          'Payment-Reminder: ${medicine.medicineName}',
           medicine.medicineType.toString() != MedicineType.None.toString()
-              ? 'It is time to pay your ${nameController}, bill according to schedule, pay your bills on time to avoid late fees'
+              ? 'It is time to pay your ${nameController.text}, according to schedule, pay your bills on time to avoid late fees'
               : 'It is time to pay your bill, according to schedule',
           Time(hour, minute, 0),
           platformChannelSpecifics);

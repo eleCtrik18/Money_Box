@@ -20,10 +20,10 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
 
-    fetchToken();
+    fetchname();
   }
 
-  void fetchToken() async {
+  void fetchname() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var x = pref.getString("firstname").toString();
     setState(() {

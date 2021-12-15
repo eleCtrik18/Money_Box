@@ -185,54 +185,6 @@ class MedicineCard extends StatelessWidget {
 
   MedicineCard(this.medicine);
 
-  Hero makeIcon(double size) {
-    if (medicine.medicineType == "Bottle") {
-      return Hero(
-        tag: medicine.medicineName + medicine.medicineType,
-        child: Icon(
-          IconData(0xe900, fontFamily: "Ic"),
-          color: Colors.purple[200],
-          size: size,
-        ),
-      );
-    } else if (medicine.medicineType == "Pill") {
-      return Hero(
-        tag: medicine.medicineName + medicine.medicineType,
-        child: Icon(
-          IconData(0xe901, fontFamily: "Ic"),
-          color: Colors.purple[200],
-          size: size,
-        ),
-      );
-    } else if (medicine.medicineType == "Syringe") {
-      return Hero(
-        tag: medicine.medicineName + medicine.medicineType,
-        child: Icon(
-          IconData(0xe902, fontFamily: "Ic"),
-          color: Colors.purple[200],
-          size: size,
-        ),
-      );
-    } else if (medicine.medicineType == "Tablet") {
-      return Hero(
-        tag: medicine.medicineName + medicine.medicineType,
-        child: Icon(
-          IconData(0xe903, fontFamily: "Ic"),
-          color: Colors.purple[200],
-          size: size,
-        ),
-      );
-    }
-    return Hero(
-      tag: medicine.medicineName + medicine.medicineType,
-      child: Icon(
-        Icons.error,
-        color: Colors.purple[200],
-        size: size,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -267,7 +219,6 @@ class MedicineCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                makeIcon(50.0),
                 Hero(
                   tag: medicine.medicineName,
                   child: Material(
